@@ -282,3 +282,262 @@ TODO:
 
 > **Summary:**  
 > Whitespace in Vulpes is for humans, not the compiler—write code that you (and others) want to read!
+
+## 2.6 Statement Terminators
+
+In Vulpes, most statements must end with a semicolon (`;`).  
+The semicolon serves as a clear boundary between statements, making the language easy to parse and reducing ambiguity.
+
+---
+
+### 2.6.1 When to Use a Semicolon
+
+- **End every statement** with a semicolon:
+    ```vlp
+    var x = 10;
+    x = x + 5;
+    print(x);
+    ```
+
+- **Blocks** (such as function bodies, `if`, `while`, etc.) do **not** require a semicolon after the closing brace (`}`):
+    ```vlp
+    fx main() => unit {
+        var done = false;
+        while (!done) {
+            // ...
+            done = true;
+        }
+    }
+    ```
+
+- **Import statements** require a semicolon:
+    ```vlp
+    import math;
+    import mykit::tools;
+    ```
+
+- **Multiple statements on one line**:  
+  Separate each with a semicolon (not recommended for readability):
+    ```vlp
+    var a = 1; var b = 2; fx foo() => unit { print(a + b); }
+    ```
+
+---
+
+### 2.6.2 Optional Semicolons
+
+- **Last statement in a block:**  
+  A semicolon is **optional** after the final statement in a block or at the end of a file.
+    ```vlp
+    fx hello() => unit {
+        print("Hi!")  // semicolon optional here
+    }
+    ```
+
+    > 🦊 **Tip:** For consistency and clarity, most Vulpes code *does* end the last statement with a semicolon.
+
+---
+
+### 2.6.3 When Not to Use a Semicolon
+
+- **After a closing brace**:  
+  Never place a semicolon immediately after `}` in function definitions, loops, or conditionals.
+
+    ```vlp
+    if (x > 0) {
+        print("positive");
+    } // No semicolon needed here
+    ```
+
+- **Inside expressions:**  
+  Semicolons do not appear inside parentheses or brackets, unless separating statements in a block.
+
+---
+
+### 2.6.4 Example
+
+```vlp
+fx main() => unit {
+    import math;
+    var n = 10;
+    if (n > 0) {
+        print("Positive number");
+    }
+    // The last statement's semicolon is optional here
+}
+```
+
+---
+
+<!--
+TODO:
+- Decide if a formatter/linter will enforce a semicolon on the last statement in a block
+- Specify how the parser handles missing or extra semicolons (error, warning, fixup?)
+-->
+
+---
+
+> **Summary:**  
+> In Vulpes, use semicolons to end statements and make your code clear.  
+> Avoid unnecessary semicolons after closing braces or within expressions.
+
+## 2.7 File and Module Layout
+
+Vulpes organizes code into files and modules for clarity, maintainability, and scalability.  
+This section explains the conventions and rules for source files, directory structure, and code organization.
+
+---
+
+### 2.7.1 Source Files
+
+- **File extension:** All Vulpes source files use the `.vlp` extension.
+- **One module per file:** Each `.vlp` file defines a single module.
+- **File name = module name:** By default, a file’s base name (without extension) is its module name.
+
+    ```
+    math.vlp   // defines module 'math'
+    utils.vlp  // defines module 'utils'
+    ```
+
+- **Entry point:** The main file (usually `main.vlp`) contains the `fx main()` entry point for executable programs.
+
+---
+
+### 2.7.2 Directory Structure
+
+- Organize related modules into directories (folders).
+- Nested directories create module namespaces.
+
+    ```
+    src/
+      main.vlp
+      math/
+        trig.vlp    // module 'math::trig'
+        stats.vlp   // module 'math::stats'
+      utils.vlp
+    ```
+
+- Import modules using their full path with `::` separators:
+    ```vlp
+    import math::trig;
+    import utils;
+    ```
+
+---
+
+### 2.7.3 Importing and Exporting
+
+- Use `import` to include code from other modules.
+- Use `export` to make functions, kits, or values available to other modules.
+
+    ```vlp
+    // In math/trig.vlp
+    export fx sin(x: float) => float { ... }
+    export fx cos(x: float) => float { ... }
+    ```
+
+    ```vlp
+    // In main.vlp
+    import math::trig;
+
+    fx main() => unit {
+        print(trig::sin(1.0));
+    }
+    ```
+
+- **Aliasing:** Use `as` to import modules with a different name:
+    ```vlp
+    import math::trig as trigonometry;
+    trigonometry::sin(0.5);
+    ```
+
+---
+
+### 2.7.4 Visibility and Access
+
+- **Default:** Items are private to their module unless marked `export`.
+- Use `pub` or `export` to make values/functions accessible to other modules.
+- Kits, enums, and functions can specify visibility per member.
+
+---
+
+### 2.7.5 Project Layout (with Foxhole)
+
+- Vulpes projects use a `kit` file for build configuration.
+    ```
+    myproject/
+      src/
+        main.vlp
+        foo.vlp
+        bar/
+          baz.vlp
+      myproject.kit
+    ```
+- The `.kit` file (like a `Cargo.toml`) declares dependencies, entry point, and build settings.
+
+---
+
+### 2.7.6 Example Layout
+
+```
+myapp/
+  src/
+    main.vlp
+    net/
+      http.vlp
+      tcp.vlp
+    utils.vlp
+  myapp.kit
+```
+
+**Example imports:**
+
+```vlp
+import net::http;
+import utils;
+```
+
+---
+
+<!--
+TODO:
+- Specify how circular imports are handled
+- Decide if relative imports (./foo) are allowed
+- Document conventions for test files, scripts, or examples
+-->
+
+---
+
+> **Summary:**  
+> Vulpes modules and files follow clear, simple naming and import rules—designed for easy navigation and scalable projects.
+
+## 2.8 Example: “Hello, World!” in Vulpes
+
+The classic first program in any language!  
+Here’s how to print `"Hello, world!"` in Vulpes:
+
+```vlp
+fx main() => unit {
+    print("Hello, world!");
+}
+```
+
+- Every executable Vulpes program starts with a `fx main()` function.
+- `print` outputs text to standard output.
+- The `unit` return type indicates that `main` returns nothing (similar to `void` in other languages).
+
+> 🦊 **Tip:**  
+> The simplicity of this example shows how quickly you can get started in Vulpes. No includes, no boilerplate—just code.
+
+---
+
+<!--
+TODO:
+- Expand with user input, command-line args, or comments
+- Link to a quickstart guide or project setup instructions
+-->
+
+---
+
+> **Next:**  
+> Ready to dive into **Types & Values**, or want to add any extra examples?
