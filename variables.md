@@ -28,7 +28,19 @@ var[FX]::fn(int)=>int add = (a) => a + 1; // Lambda function
 ## 4.2 Modifiers
 
 - **SOLID:** Immutable (constant) variable
-- **FX:** Function/lambda/closure
+- **FX:**  
+    - **Named local function**:  
+      ```vlp
+      var[FX] add(a: int, b: int) => int {
+          return a + b;
+      }
+      ```
+    - **Anonymous function (lambda)**:  
+      ```vlp
+      var[FX] inc = (x: int) => x + 1;
+      ```
+    - **Closures**: `[FX]` functions can capture local variables.
+    - Named `[FX]` functions behave like locally-scoped, assignable functions—perfect for higher-order programming, callbacks, or passing as values.
 - **ARRAY(n):** Array of `n` elements
 - **PTR:** Pointer/reference
 - **OPTION:** Optional value
@@ -105,7 +117,38 @@ var[SOLID]::int oldName = 0;
 
 ---
 
-## 4.8 Examples
+## 4.8 First-Class Functions with [FX]
+
+Vulpes treats functions as values. Using `[FX]` enables both named and anonymous functions within any scope.
+
+**Named local function:**
+```vlp
+var[FX] add(a: int, b: int) => int {
+    return a + b;
+}
+```
+
+**Anonymous function (lambda):**
+```vlp
+var[FX] inc = (x: int) => x + 1;
+```
+
+**Passing functions as values:**
+```vlp
+var[FX] multiply(a: int, b: int) => int {
+    return a * b;
+}
+
+fx apply_twice(f: fn(int, int)=>int, x: int, y: int) => int {
+    return f(f(x, y), f(x, y));
+}
+
+apply_twice(add, 2, 3); // Returns 10
+```
+
+---
+
+## 4.9 Examples
 
 ```vlp
 // Mutable, inferred type
@@ -120,8 +163,13 @@ var[ARRAY(5)]::float samples = [1.0, 2.0, 3.0, 4.0, 5.0];
 // Pointer to int
 var[PTR]::int ptr = &count;
 
-// Lambda
-var[FX]::fn(int)=>int double = (x) => x * 2;
+// Named function in local scope
+var[FX] square(x: int) => int {
+    return x * x;
+}
+
+// Lambda (anonymous function)
+var[FX] triple = (x: int) => x * 3;
 ```
 
 ---
@@ -137,4 +185,5 @@ TODO:
 ---
 
 > **Summary:**  
-> Vulpes variables are flexible, explicit, and composable—designed to let you express both low-level detail and high-level intent.
+> Vulpes variables are flexible, explicit, and composable—designed to let you express both low-level detail and high-level intent.  
+> Named `[FX]` functions give you local, first-class functions without boilerplate—bridging the gap between functional and procedural styles!
