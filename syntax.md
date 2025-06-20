@@ -143,3 +143,48 @@ var letters = ['a', 'b', 'c'];
 var maybeName = None;
 ```
 
+## 2.4 Comments
+
+Comments are used to annotate, document, or temporarily disable parts of Vulpes code.  
+They are completely ignored by the compiler and have no effect on program behavior.
+
+---
+
+### 2.4.1 Single-line Comments
+
+Begin a single-line comment with `//`.  
+Everything after `//` until the end of the line is considered a comment.
+
+```vlp
+// This is a single-line comment
+
+var x = 5; // Comments can appear after code, too
+
+/*
+  This is a multi-line (block) comment.
+  It can span multiple lines and is useful for:
+    - Temporarily disabling code
+    - Explaining algorithms or design decisions
+    - Providing high-level documentation for sections of code
+*/
+
+/* 
+   This is okay.
+   /* This is NOT a nested comment. The first */ closes the comment block. */
+   var x = 10; // This code is now outside the comment!
+*/
+
+/// Computes the factorial of a number
+fx factorial(n: int) => int { ... }
+
+/**
+ * Represents a network packet
+ */
+kit NetworkPacket { ... }
+// Binary search assumes the array is sorted
+// TODO: Optimize this algorithm
+/*
+var oldLogic = ...
+// This code is obsolete but kept for reference
+*/
+```
