@@ -93,3 +93,49 @@ Invalid:
 var           // reserved keyword
 my-value      // contains hyphen
 $budget       // contains $
+```
+
+## 2.3 Literals
+
+Literals are fixed values written directly in Vulpes source code. They’re the building blocks for variables, expressions, and function calls.
+
+### Supported Literal Types
+
+| Type      | Example(s)               | Notes                                           |
+|-----------|--------------------------|-------------------------------------------------|
+| Integer   | `0`, `42`, `-17`         | Underscores allowed for readability: `1_000_000`|
+| Float     | `3.14`, `0.0`, `-1.2e6`  | Must include a decimal or exponent              |
+| Boolean   | `true`, `false`          | Case-sensitive                                  |
+| String    | `"hello"`, `"fox\nkit"`  | Double quotes, supports escapes                 |
+| Char      | `'a'`, `'\n'`            | Single quotes, one character or escape          |
+| Array     | `[1, 2, 3]`              | Comma-separated elements in square brackets     |
+| None      | `None`                   | Special literal for “no value” (option types)   |
+
+---
+
+### Integer Literals
+
+- Decimal: `42`, `-17`
+- Hexadecimal: `0x2A`, `0xFF`
+- Binary: `0b1010`
+- Octal: `0o77`
+- Underscores for readability: `1_000_000`
+
+### Float Literals
+
+- Standard: `3.14`, `0.0`, `-12.0`
+- Exponent: `6.022e23`, `-1.2E-6`
+- Must have a decimal point or exponent
+
+### Boolean Literals
+
+- `true` and `false` only
+
+### String Literals
+
+- Double quotes: `"Hello, world!"`
+- Escape sequences: `\n` (newline), `\t` (tab), `\\`, `\"`, `\x41` (hex), etc.
+
+```vlp
+var message = "Welcome to Vulpes!\nEnjoy your stay.";
+```
