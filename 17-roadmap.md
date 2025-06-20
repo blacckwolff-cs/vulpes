@@ -70,5 +70,93 @@ Vulpes is just getting started. Here’s where we’re headed—and how you can 
 
 ---
 
+## 17.7 The Future
+
+# The Vulpes Project Ecosystem
+
+Vulpes is more than a language—it’s an integrated, “batteries-included” platform.  
+Here’s how all the official tools, helpers, and next-gen features work together to create a seamless developer experience.
+
+---
+
+## Core Components
+
+| Name     | Description                              | Command / Prefix          |
+|----------|------------------------------------------|--------------------------|
+| **Vulpes** | The core programming language             | N/A                      |
+| **Foxhole** | Build system & project/package manager   | `foxhole build`, `foxhole run` |
+| **Ninetail** | Version control system for Vulpes       | `nt init`, `nt commit`   |
+| **MrFox**  | AI assistant for compile errors and suggestions | Integrated with Foxhole |
+| **Clever** | Linter for catching bugs & suggesting fixes | `foxhole lint`         |
+| **Kitsune** | Language server for IDE integration       | Provides LSP support     |
+| **Burrow** | Code formatter for consistent style        | `foxhole fmt`           |
+| **Tricky** | Documentation generator from code comments | `foxhole doc`           |
+| **Fennec** | REPL for interactive Vulpes coding         | `foxhole repl`          |
+| **NineOS** | Operating system written in Vulpes         | Built with Foxhole       |
+
+---
+
+## What Each Tool Does
+
+### **Vulpes**
+- The language itself: safe, expressive, and fast for every domain.
+
+### **Foxhole**
+- Build your project, run code, manage dependencies, and publish packages.
+- Handles project scaffolding, compilation, and builds (including `NineOS`!).
+
+### **Ninetail**
+- Git-like VCS, but with Vulpes-first features.
+- Track history, branch, and merge with full integration into Foxhole and language-level semantics.
+- CLI: `nt init`, `nt status`, `nt commit`, etc.
+
+### **MrFox**
+- Your AI-powered error explainer and code mentor.
+- Integrated with Foxhole: on any compile or lint error, MrFox offers suggestions, fixes, and learning resources.
+
+### **Clever**
+- Static linter: detects common bugs, unused code, stylistic issues, and recommends idiomatic fixes.
+- Run as `foxhole lint` or in your IDE.
+
+### **Kitsune**
+- Language Server Protocol implementation.
+- Enables autocompletion, go-to-definition, type info, symbol search, and more in your favorite editors.
+
+### **Burrow**
+- Consistent code style with zero hassle.
+- `foxhole fmt` auto-formats your code on save, commit, or demand.
+
+### **Tricky**
+- Generates docs from code comments and trinkets.
+- Output: beautiful HTML, Markdown, or IDE tooltips. Used via `foxhole doc`.
+
+### **Fennec**
+- A REPL for Vulpes: experiment, learn, and debug interactively.
+- `foxhole repl` launches an interactive shell with instant feedback.
+
+### **NineOS**
+- Ambitious long-term project: a whole OS written in Vulpes.
+- Showcases Vulpes’ power “from userland to kernel,” built using the same Foxhole workflow.
+
+---
+
+## How It All Fits Together
+
+- **Write code** in Vulpes, get live IDE feedback from Kitsune, auto-format with Burrow, and auto-lint with Clever.
+- **Build and run** with Foxhole. If you hit errors, MrFox helps explain and fix them.
+- **Document** your work with Tricky. Share and publish packages via Foxhole and (future) Foxden.
+- **Track changes** with Ninetail—native VCS with semantic awareness.
+- **Explore and experiment** live with Fennec.
+- **Deploy anywhere:** from cross-platform binaries to the eventual NineOS.
+
+---
+
+## Why This Matters
+
+> The Vulpes ecosystem is built to make you productive, safe, and happy—whether you’re building a quick script, a massive system, or the next great OS.  
+> Each tool is tightly integrated for a smooth, “no boilerplate” workflow, with world-class error messages, docs, and learning support.
+
+---
+
 > **Summary:**  
 > Vulpes is moving fast, with big plans—join us in making a language that’s truly “Nine Tails Ahead.”
