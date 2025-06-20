@@ -138,4 +138,8 @@ Literals are fixed values written directly in Vulpes source code. They’re the 
 
 ```vlp
 var message = "Welcome to Vulpes!\nEnjoy your stay.";
+var nums = [10, 20, 30];
+var letters = ['a', 'b', 'c'];
+var maybeName = None;
 ```
+
