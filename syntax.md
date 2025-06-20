@@ -51,3 +51,39 @@
 | type      | Type alias/definition            |         |        ✔         |       |
 | operator  | Operator overloading             |         |        ✔         |       |
 | dyn       | Dynamic typing                   |         |        ✔         |       |
+
+## 2.2 Identifiers
+
+Identifiers are names for variables, kits, enums, functions, modules, and other user-defined entities in Vulpes.
+
+### Rules for Identifiers
+
+- **Start:** Must begin with a letter (`a-z`, `A-Z`) or underscore (`_`)
+- **Continue:** May contain letters, digits (`0-9`), or underscores
+- **Case-sensitive:** `myVar`, `MyVar`, and `myvar` are all distinct
+- **No reserved keywords:** Identifiers cannot use any [reserved keywords](#21-reserved-keywords-in-vulpes)
+- **No special symbols:** `$`, `@`, `-`, etc. are *not* allowed
+
+### Naming Conventions
+
+| Use               | Convention    | Example          |
+|-------------------|--------------|------------------|
+| Variables         | `camelCase`  | `countDown`      |
+| Functions         | `camelCase`  | `computeSum`     |
+| Kits (Structs)    | `PascalCase` | `NetworkPacket`  |
+| Enums             | `PascalCase` | `FileType`       |
+| Constants         | `ALL_CAPS`   | `MAX_SIZE`       |
+
+> **Tip:**  
+> Following these conventions isn’t required by the compiler, but is highly recommended for clarity and “idiomatic” Vulpes code.
+
+### Examples
+
+Valid:
+```vlp
+counter
+answer42
+_fooBar
+FileReader
+parseFile
+MAX_LENGTH
