@@ -150,11 +150,6 @@ They are completely ignored by the compiler and have no effect on program behavi
 
 ---
 
-### 2.4.1 Single-line Comments
-
-Begin a single-line comment with `//`.  
-Everything after `//` until the end of the line is considered a comment.
-
 ```vlp
 // This is a single-line comment
 
