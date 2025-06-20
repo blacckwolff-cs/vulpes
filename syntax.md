@@ -183,3 +183,102 @@ var oldLogic = ...
 // This code is obsolete but kept for reference
 */
 ```
+
+## 2.5 Whitespace & Formatting
+
+Whitespace in Vulpes helps make code readable but (with rare exceptions) does not affect meaning or execution.
+
+---
+
+### 2.5.1 Significance of Whitespace
+
+- **Spaces, tabs, and newlines** are generally ignored except as token separators.
+- **Indentation** is recommended for clarity but not required for program correctness (unlike Python).
+- Multiple spaces or blank lines are allowed between statements or within blocks.
+
+```vlp
+fx main() => unit {
+    var x = 5;
+    var y = 10;
+    
+    if (x < y) {
+        print("x is less than y");
+    }
+}
+```
+
+---
+
+### 2.5.2 Statement Terminators
+
+- **Semicolons (`;`)** are used to end statements.
+- Multiple statements can be written on one line, separated by semicolons (not recommended for readability).
+
+```vlp
+var a = 1; var b = 2;
+```
+
+- You may place a statement across multiple lines as long as it is not ambiguous:
+
+```vlp
+var total = a +
+            b +
+            c;
+```
+
+---
+
+### 2.5.3 Indentation and Style
+
+- Use consistent indentation (spaces or tabs—pick one per project).
+- **Recommended:** 4 spaces per indent level.
+- Align related code visually for clarity.
+
+```vlp
+fx factorial(n: int) => int {
+    if (n <= 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+```
+
+> 🦊 **Tip:**  
+> Idiomatic Vulpes code favors clarity—prefer readable formatting over clever one-liners.
+
+---
+
+### 2.5.4 Blank Lines
+
+- Use blank lines to separate logical sections of code (e.g., between functions, before/after large blocks).
+
+---
+
+### 2.5.5 Edge Cases
+
+- Extra whitespace inside expressions/statements is ignored:
+
+```vlp
+var x      =   5    +   7 ;
+```
+
+- Do **not** add whitespace within identifiers or between function name and parameter list:
+
+```vlp
+fx  main ( )   // ❌ Not valid—extra spaces in function signature
+fx main()      // ✔️ Correct
+```
+
+---
+
+<!--
+TODO:
+- Decide if a linter/formatter should enforce a specific style
+- Specify if trailing whitespace is always ignored (recommended)
+-->
+
+---
+
+> **Summary:**  
+> Whitespace in Vulpes is for humans, not the compiler—write code that you (and others) want to read!
