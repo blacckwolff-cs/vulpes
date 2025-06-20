@@ -87,3 +87,9 @@ _fooBar
 FileReader
 parseFile
 MAX_LENGTH
+
+Invalid:
+9lives        // starts with digit
+var           // reserved keyword
+my-value      // contains hyphen
+$budget       // contains $
