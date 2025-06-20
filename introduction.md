@@ -47,4 +47,4 @@
 
 **In short:**  
 *Vulpes is what C++ could have been, what Rust wanted to be, and what Python makes you wish you had—  
-but it’s all in one language, with a fox’s attitude.*
+but it’s all in one language.*
